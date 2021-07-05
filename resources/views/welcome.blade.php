@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Welcome</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -127,6 +127,14 @@
                     </div>
                 </div>
             </div>
+
+            <tr>
+                    <td><a type="button" class="btn" href="joborders_percountry" name="btn">{{$newclient ?? ''->jobsite}}</a></td>
+                    <td>{{$newclient ?? ''->POEA_accredition}}</td>
+                    <td>{{$newclient ?? ''->expiration_date}}</td>
+                  </tr
         </div>
+    </div>
+    
     </body>
 </html>

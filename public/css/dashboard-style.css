@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
+/*
+:root {
+    --main-color: #027581;
+    --color-dark: #1d2231;
+    --text-grey: #8390a2;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+
+}
+
+.sidebar {
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background: var(--main-color);
+    color: #fff;
+    padding: 1rem;
+    overflow-y: auto;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0rem 1rem;
+}
+.sidebar-menu {
+    padding: 1rem;
+}
+.sidebar li {
+    margin-bottom: 1rem;
+}
+.sidebar a {
+    color: #fff;
+    font-size: .8rem;
+}
+.sidebar a span:first-child {
+    padding-left: .6rem;
+}
+#sidebar-toggle:checked + .sidebar {
+    width: auto;
+}
+#sidebar-toggle:checked + .sidebar .sidebar-header h3 span,
+#sidebar-toggle:checked + .sidebar li span:last-child {
+    display: none;
+}
+#sidebar-toggle:checked + .sidebar .sidebar-header,
+#sidebar-toggle:checked + .sidebar li {
+    display: flex;
+    justify-content: center;
+}
+#sidebar-toggle:checked + .main-content {
+    margin-left: 180px;
+}
+.main-content {
+    min-height: 100vh;
+    margin-left: 240px;
+}
+header {
+    position: fixed;
+    left: 240px;
+    top: 0;
+    z-index: 100;
+    width: calc(100% - 240px);
+    background: #fff;
+    height: 60px;
+    padding: 0rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    transition: left 500ms;
+}
+.search-wrapper {
+    display: flex;
+    align-items: center;
+}
+.search-wrapper input {
+    border: 0;
+    outline: 0;
+    padding: 1rem;
+    height: 38px;
+}
+.social-icons {
+    display: flex;
+    inline-size: auto;
+}
+.social-icons img{
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+}
+.social-icons span,
+.social-icons div {
+    margin-left: 1rem;
+}
+
+.social-icons div{
+    height: 38px;
+    width: 38px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("images/sample.jpg");
+    border-radius: 50%;
+}
+main {
+    margin-top: 60px;
+    background: #f1f5f9;
+    min-height: 90vh;
+    padding: 1rem;
+}
+.dash-title {
+    color: var(--color-dark);
+    margin-bottom:  1rem;
+
+}
+.dash-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5rem;
+}
+.card-single {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+*/
+
+
+:root {
+    --nav-icon-width: 50px;
+    --nav-border-width: 8px;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  .page-container {
+    height: inherit;
+    display: flex;
+  }
+  
+  .main {
+    height: inherit;
+    padding: 0;
+    padding-left: var(--nav-border-width);
+    overflow-y: auto;
+  }
+  
+  .nav {
+    width: 200px;
+    height: inherit;
+    position: relative;
+    background-color: #eeeeee;
+    transition: width 0.2s;
+    flex-shrink: 0;
+  }
+  
+  .nav--collapsed {
+    width: var(--nav-icon-width);
+  }
+  
+  .nav--collapsed .nav__label {
+    display: none;
+  }
+  
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+  }
+  
+  .nav__link:hover {
+    background-color: #dddddd;
+    color: aquamarine;
+  }
+  
+  .nav__icon-container {
+    width: var(--nav-icon-width);
+    height: var(--nav-icon-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .nav__label {
+    white-space: nowrap;
+  }
+  
+  .nav__border {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: var(--nav-border-width);
+    height: inherit;
+    background-color: #dddddd;
+    transition: background-color 0.2s;
+    cursor: ew-resize;
+  }
+  
+  .nav__border:hover {
+    background-color: #cccccc;
+  }
+  

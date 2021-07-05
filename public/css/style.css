@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
+
+
+
+  .card {
+    border-radius: 10px;
+    border-color: #edf2f9;
+    box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  }
+  .acard:hover {
+    border-radius: 10px;
+    border-color: #edf2f9;
+    box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  }
+  .card-header {
+    background-color: white;
+  }
+  .card-header h3 h5 {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  .card-actions h5 {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  
+  i {
+    color: white;
+  }
+  .activeclient i {
+    color: green;
+    height: 50px;
+    width: 50px;
+    
+  
+  }
+  .applicant i {
+    color: #037BFF;
+    height: 50px;
+    width: 50px;
+  
+  }
+  .joborder i {
+    color: #DC3444;
+    height: 50px;
+    width: 50px;
+  
+  }
+  .jobsite i {
+    color: #17A2B8;
+    height: 50px;
+    width: 50px;
+  
+  }
+  .btn-cards{
+    color: black;
+    border-color: #edf2f9;
+    box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+  }
+
+  #form-jo {
+    background: white;
+    margin-top: 20px;
+    padding: 40px 20px;
+    align-items: center;
+    border-radius: 10px;
+  }
+  #form-jo .button {
+    padding: 30px 20px;
+  }
+  .footer {
+    background: white;
+    z-index: auto;
+    width: auto;
+    
+  }
+  .content {
+    display: flex;
+  }
+  .text-header{
+    text-align: center;
+  }
+  .info {
+    width: 300px;
+    height: 100px;
+  }
+  .info img {
+    border-radius: 50%;
+    margin-right: 1rem;
+    align-self: center;
+  }
+
+  .info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #444;
+  }
+  .card-bodys {
+    padding: 20px 20px;
+  }
+ 
+  
