@@ -24,7 +24,7 @@
             @endforeach
         @endif
     @endforeach
-
+ 
     @if($paginator->hasMorePages())
         <li class="page-item "><a class="page-link" href="{{ $paginator->nextPageUrl() }}"><span>&raquo;</span></a></li>
     @else

@@ -28,6 +28,8 @@ Profile
                         <li class="nav-item"><a class="nav-link active" href="" data-toggle="tab">Personal Information</a></li>
                         <li class="nav-item"><a class="nav-link" href="">Change Password</a></li>
                     </ul>
+
+                    
               </div>
           </div>
       </div>

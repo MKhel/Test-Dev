@@ -17,7 +17,20 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    
 
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -135,17 +148,19 @@
             </ul>
       </nav>
 
+  
 
-
-    <main class="main">
-<div class="top-nav-container">  
+    
+<!-- <div class="top-nav-container">
+  
 <div class="toggle" onclick="toggleMenu();"> </div> 
 <div class="search-container">
   <form action="" class="search-content">
     <input type="search" placeholder="Search" aria-label="Search" class="search-box"/>
     <i class="fas fa-search search-icon"></i>
   </form>
-</div> 
+</div> -->
+
 <!--<nav>
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
@@ -196,7 +211,7 @@
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
     </nav> -->
-</div>    
+  
               <!--  <nav class="navbar">
               
                 <div class="toggle" onclick="toggleMenu();"> </div>
@@ -337,15 +352,79 @@
 
 
 </nav>
--->
+--> 
+<main class="main">
+      <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="top-nav-container">
+              <div class="toggle" onclick="toggleMenu();"> </div>
+             
                 
-      <div class="content">
-      <div class="container-fluid">
-      @show
-      @yield('content')
-           
-      </div>  
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+                                    <span class="dropdown-item">
+                                    @if (Auth::user()->role == '1' ) <span >Admin</span>
+                                    @elseif (Auth::user()->role == '2') <span >User</span>
+                                    @endif  
+                                    </span>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+        <main class="py-4">
+            <div class="content">
+          <div class="container-fluid">
+          @show
+          @yield('content')
+              
+          </div>  
+          </div>
+        </main>
       </div>
+            
+      
       <footer class="footer">
 				<div class="container-fluid">
 					<div class="row text-muted align-content-center">

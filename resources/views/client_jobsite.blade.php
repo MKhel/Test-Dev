@@ -199,22 +199,11 @@ Client Jobsite
                     @endforeach
                     <tr> 
 
-                    @foreach($data as $count_datas)
-                    
-                    @endforeach
+                   
                   
                    
 
-                    @foreach($count_data as $data_count)
-                    <td>{{$count_datas->position}}</td> 
-                    <td>{{$data_count[0]}}</td>
-                    <td>{{$data_count[1]}}</td>
-                    <td>{{$data_count[2]}}</td>
-                   
-                 
-                        
-                </tr>         
-                @endforeach 
+                    </tr>
                     
                     
             </tbody>

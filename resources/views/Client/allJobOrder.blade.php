@@ -19,22 +19,22 @@ Client Job Order
         <div class="row">
           <div class="col-lg-12">
             <h4>Search Job</h4>
-            <div class="row">
+  
             <form action="{{ route('web.search' ) }}" method="GET">
              
-              <div class="col-lg-9">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <input type="text" class="form-control" name="query" placeholder="Keyword e.g Job Title, Description">
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <button type="submit" class="primary-btn">Search</button>
                 </div>
               </div>
               
             </form>
-            </div>
+ 
             <br>
             <br>
             <div style="overflow-x:auto;">

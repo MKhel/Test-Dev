@@ -4,9 +4,11 @@ use App\Http\Controllers\active_client;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\searchController;
+use App\Http\Controllers\userController;
 use App\Models\activeclient;
 use App\Models\client;
 use App\Models\new_client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Input;
@@ -119,27 +121,27 @@ Route::any('/search', function(){
 //Route::get('/', function () {
     //return view('dashboard');b
 //});
-Route::resource('/joborder', 'App\Http\Controllers\JobController');
-Route::resource('/client', 'App\Http\Controllers\clientController');
-Route::resource('/activeclients', 'App\Http\Controllers\active_client');
-Route::resource('/statusdashboard', 'App\Http\Controllers\dashboardController');
-Route::resource('/applicant', 'App\Http\Controllers\applicant_Controller');
+Route::resource('/joborder', 'App\Http\Controllers\JobController')->middleware(['auth']);
+Route::resource('/client', 'App\Http\Controllers\clientController')->middleware(['auth']);
+Route::resource('/activeclients', 'App\Http\Controllers\active_client')->middleware(['auth']);
+Route::resource('/statusdashboard', 'App\Http\Controllers\dashboardController')->middleware(['auth']);
+Route::resource('/applicant', 'App\Http\Controllers\applicant_Controller')->middleware(['auth']);
 
 //Pages Dashboard
-Route::get('/dashboard' , 'App\Http\Controllers\PagesController@dashboard');
-Route::get('/selectclient/{id}', 'App\Http\Controllers\PagesController@add_JO');
-Route::get('/addclient' , 'App\Http\Controllers\PagesController@addclient');
-Route::get('/selectclient' , 'App\Http\Controllers\PagesController@selectclient');
-Route::get('/profile' , 'App\Http\Controllers\PagesController@profile');
+Route::get('/dashboard' , 'App\Http\Controllers\PagesController@dashboard')->middleware('auth');
+Route::get('/selectclient/{id}', 'App\Http\Controllers\PagesController@add_JO')->middleware(['auth']);
+Route::get('/addclient' , 'App\Http\Controllers\PagesController@addclient')->middleware(['auth']);
+Route::get('/selectclient' , 'App\Http\Controllers\PagesController@selectclient')->middleware(['auth']);
+Route::get('/profile' , 'App\Http\Controllers\PagesController@profile')->middleware(['auth']);
 //Pages Active Clients
-Route::get('/deployment' , 'App\Http\Controllers\PagesController@deployment');
+Route::get('/deployment' , 'App\Http\Controllers\PagesController@deployment')->middleware(['auth']);
 
 //Pages Applicant Pages
-Route::get('applicant_list', 'App\Http\Controllers\PagesController@applicant_list');
-Route::get('selectposition', 'App\Http\Controllers\PagesController@add_applicant');
+Route::get('applicant_list', 'App\Http\Controllers\PagesController@applicant_list')->middleware(['auth']);
+Route::get('selectposition', 'App\Http\Controllers\PagesController@add_applicant')->middleware(['auth']);
 //Job Position Selection to add new applicant
 
-Route::get('/position/{id}' , 'App\Http\Controllers\client_data_controller@getallposition');
+Route::get('/position/{id}' , 'App\Http\Controllers\client_data_controller@getallposition')->middleware(['auth']);
 
 
 //Route::get('/activeclient/{id}', 'App\Http\Controllers\clientController@getstatuspositiondata');
@@ -147,7 +149,7 @@ Route::get('/position/{id}' , 'App\Http\Controllers\client_data_controller@getal
 
 
 // For all search pages
-Route::get('/search', [searchController::class, 'search'])->name('web.search');
+Route::get('/search', [searchController::class, 'search'])->name('web.search')->middleware(['auth']);
 
 // Accout Profile
 Route::post('change-profile-picture', [adminController::class, 'updatePicture'])->name('adminPictureUpdate');
@@ -200,4 +202,20 @@ Route::get('/testtest' , 'App\Http\Controllers\PagesController@test');
 
 Route::get('/admin-dashboard', function(){
 	return view('Admin.admin_dashboard');
+});
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'auth']], function(){
+	Route::get('dashboard', [adminController::class,'index'])->name('admin.dashboard');
+	Route::get('profile', [adminController::class,'profile'])->name('admin.profile');
+	Route::get('settings', [adminController::class,'settings'])->name('admin.settings');
+});
+
+Route::group(['prefix'=>'user', 'middleware'=>['isUser', 'auth']], function(){
+	Route::get('dashboard', [userController::class,'index'])->name('user.dashboard');
+	Route::get('profile', [userController::class,'profile'])->name('user.profile');
+	Route::get('settings', [userController::class,'settings'])->name('user.settings');
 });
