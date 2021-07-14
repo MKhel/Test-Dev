@@ -10,10 +10,10 @@ Active Client
         <div class="mt-4 ml-4 mb-3">
         <div class="col-sm-8">
         <h2>Active Clients</h2>
+
+        {{ Breadcrumbs::render('client') }}
         </div>
-        <div class="col-md-12 mb-5">
-            <a href="/selectposition" class="primary-btn">Add Applicant</a>
-        </div>
+        
         </div>
     <hr>
       
@@ -33,7 +33,7 @@ Active Client
               <div class="card cards acard">
               
                 <div class="card-body">
-                <img height="200" width="150" style="max-height: 200px; max-width: 200px;padding:20px;align-items: center;" class="float-right" src="{{asset('images')}}/{{$newclient->file}}">
+                <img height="120" width="120" style="max-height: 120px; max-width: 120px;padding:20px; float:right; position:block;" src="{{asset('images')}}/{{$newclient->file}}">
                   <h5 class="card-title" name="client">{{$newclient->clients_name}}</h5>
                   <p class="card-text" >{{$newclient->descriptions}}</p>
                   <p class="card-text" >{{$newclient->poea_accredition}}</p>

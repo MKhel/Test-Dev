@@ -5,28 +5,24 @@ Select Job Position
 @endsection
 
 @section('content')
+
 <div class="row">
-<div class="col-md-12 header-top-text">
-    <div class="row header-text-content">
-    <div class="col-md-8">
-            <h2>Job Position Selection</h2>
-            <p>Please select job position before add new applicant. </p>
-        </div>
-      <div class="col-md-4">
-            <!--<form action="">
-                <input type="text" placeholder="Search" class="searchBox">
-                <button class="searchBtn"> <i class="fa fa-search"></i></button>
-            </form>
-            -->
+<div class="col-md-12 header-top-text mb-4">
+
+        <div class="mt-4 ml-4 mb-3">
+      
+        <h2>Job Position Selection</h2>
+        <p>Please select client to add new applicant. </p>
+        
         </div>
         
+    <hr>
+    <div class=" ml-4 ">
+    {{ Breadcrumbs::render('selectjob') }}
     </div>
-      
-       
 </div>
 
 </div>
-<hr>
 <div class="row">
 
         @foreach($JobPosition as $JO)

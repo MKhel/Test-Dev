@@ -16,10 +16,12 @@ class searchController extends Controller
             $jobs = DB::table('job_orders')->where('position', 'LIKE', '%'.$search_text.'%')->paginate(3);
             $jobs->appends($request->all());
             $alljobs = JobOrder::all();
-            return view('Client.allJobOrder', ['jobs' => $jobs], ['alljobs' => $alljobs]);
+            $clientJoborder = JobOrder::all();
+            return view('JobOrders.allJobOrder', ['jobs' => $jobs], ['clientjoborder' => $clientJoborder], ['alljobs' => $alljobs]);
         }
         else {
-            return view('Client.allJobOrder');
+            
+            return view('JobOrders.allJobOrder');
         }
         
     }

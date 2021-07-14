@@ -5,22 +5,34 @@ Applicant List
 @endsection
 
 @section('content')
-<div class="content-section">
-  
-        <div class="mt-4 ml-3 mb-3">
+<div class="content-container">
 
-          
-          <h2> Applicant List</h2>
+<div class="row">
+<div class="col-md-12 header-top-text mb-4">
+        <div class="mt-4 ml-4 mb-3">
+        <div class="col-sm-12">
+        <h2>Applicant List</h2>
 
-    
+        {{ Breadcrumbs::render('applicants') }}
         </div>
-</div>
+        
+        </div>
+    <hr>
       
-<hr>
-<div class="col-md-12 mb-5">
-    <a href="/selectposition" class="primary-btn">Add Applicant</a>
+      
 </div>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+</div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-lg-12">
+              <h4>Search Job</h4>
+            </div>
+           
+              <div class="col-md-12">
+            <form action="{{ route('web.search' ) }}" method="GET">
+             
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
       <div style="overflow-x:auto;">
       
         <table class="table table-borderless" id="myTable" >
@@ -61,12 +73,13 @@ Applicant List
                         
                       
                       <td>
-
+                      @can('view', Auth::user())
                         <div class="action-btn">
                       <a class="btn-view" href="/client/{{$appData->clients_name}}">
                         <i class="fas fa-eye"></i>
                       </a>
                       </div>
+                                   
                       <div class="action-btn ">
                       <a class="btn-edit" href="/applicant/{{$appData->applicant_id}}/edit">
                         <i class="fas fa-pencil-alt"></i>
@@ -83,7 +96,7 @@ Applicant List
                         </form>
                         </div>
                       </td>
-                      
+                      @endcan   
                     </tr>
                   @endforeach
               
@@ -98,7 +111,10 @@ Applicant List
             </ul>
           </nav>
       </div>
-    
+        </div>        
+</div>
+
+
       <br><br>
 @endsection
 @section('footer')

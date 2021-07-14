@@ -5,12 +5,21 @@ Add new applicant
 @endsection
 
 @section('content')
-<div class="content-container">
+
 <div class="row">
-<div class="col-lg-12">
-      <div class="mt-4 ml-4 mb-3">
-        <h1 class="h2">Adding new applicant for {{$JobPosition[0]->position}}</h1>
+<div class="col-md-12 header-top-text mb-4">
+        <div class="mt-4 ml-4 mb-3">
+        <div class="col-sm-8">
+        <h2>Adding new applicant for {{$JobPosition[0]->position}}</h2>
+
+        {{ Breadcrumbs::render('clients') }}
         </div>
+        
+</div>
+      
+      
+</div>
+
 </div>
 @if(Session::has('client_added'))
 <div class="col-lg-12">
@@ -20,11 +29,9 @@ Add new applicant
 </div>
             @endif
 <div class="form-container">
-<form id="form-jo" action="/applicant" class="row g-3 needs-validation" method="POST" novalidat>
+<form id="form-jo" action="/applicant" class="row g-3 needs-validation" method="POST" novalidate>
 
-    <div class="col-md-12 form-header" >
-        <h3>Add new applicant</h3>
-    </div>
+    
     <div class="col-12 mb-3">
         <label for="inputAddress2" class="form-label">Fist name</label>
         <input type="text" name="first_name" class="form-control" id="firstname" placeholder="Firstname" required>
@@ -82,8 +89,7 @@ Add new applicant
 </form>
 </div>
 
-</div>
-</div>
+
 <br><br>
 @endsection
 

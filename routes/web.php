@@ -121,8 +121,9 @@ Route::any('/search', function(){
 //Route::get('/', function () {
     //return view('dashboard');b
 //});
+Route::get('/client', [App\Http\Controllers\clientController::class, 'index'])->name('client')->middleware(['auth']);
 Route::resource('/joborder', 'App\Http\Controllers\JobController')->middleware(['auth']);
-Route::resource('/client', 'App\Http\Controllers\clientController')->middleware(['auth']);
+//Route::resource('/client', 'App\Http\Controllers\clientController')->middleware(['auth']);
 Route::resource('/activeclients', 'App\Http\Controllers\active_client')->middleware(['auth']);
 Route::resource('/statusdashboard', 'App\Http\Controllers\dashboardController')->middleware(['auth']);
 Route::resource('/applicant', 'App\Http\Controllers\applicant_Controller')->middleware(['auth']);

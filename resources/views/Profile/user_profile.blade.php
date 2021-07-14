@@ -13,8 +13,10 @@ Profile
                   <div class="text-center">
                       <img class="profile-user-img img-fluid img-circle" src="" alt="User Profile Picture">
                   </div>
-                <h3 class="profile-username text-center admin_name">Michael</h3>
-                <p class="text-muted text-center">Admin</p>
+                <h5 class="profile-username text-center admin_name">{{ Auth::user()->name }}</h5>
+                <p class="text-muted text-center"> @if (Auth::user()->role == '1' ) <span >Admin</span>
+                                    @elseif (Auth::user()->role == '2') <span >User</span>
+                                    @endif </p>
                 <input type="file" name="admin_image" id="admin_image" style="opacity: 0; height:1px;Display:none;"> 
                 <a href="javascript:void(0)" class="btn btn-primary btn-block" id="change_picture_btn"><b>Change Profile</b></a> 
             </div> 

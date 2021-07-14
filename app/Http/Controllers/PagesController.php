@@ -17,7 +17,7 @@ class PagesController extends Controller
         //echo view('activeclient');
     	
     }
-
+    // Clients
     public function active_client(){
     	return view('activeclient');
     }
@@ -39,25 +39,29 @@ class PagesController extends Controller
     public function client_jobsite(){
     	return view('client_jobsite');
     }
-    public function add_joborder(){
-    	return view('add_joborder');
-    }
+    
+    // Applicants
     public function applicant_list(){
         $applicantData = Applicant::paginate(5);
     	return view('Applicant.applicant_list', compact('applicantData'));
-    }   
-    public function add_JO($id){
-        $clientData = activeclient::find($id);
-        $clientID = $clientData->id;
-        return view('add_joborder', compact('clientData', 'clientID'));
-        //$clientData = activeclient::where("id", "LIKE", "$id")->get();
-    	//return view('add_joborder');
-        
     }
     public function add_applicant(){
         $JobPosition = JobOrder::all();
         return view('Applicant.selectjob', compact('JobPosition'));
     }
+    // JobOrders   
+    public function add_JO($id){
+        $clientData = activeclient::find($id);
+        $clientID = $clientData->id;
+        return view('JobOrders.add_joborder', compact('clientData', 'clientID'));
+        //$clientData = activeclient::where("id", "LIKE", "$id")->get();
+    	//return view('add_joborder');
+        
+    }
+    public function add_joborder(){
+    	return view('add_joborder');
+    }
+    
     
 
     public function test(){

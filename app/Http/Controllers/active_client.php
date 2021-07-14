@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\activeclient;
 use App\Models\Applicant;
 use App\Models\JobOrder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,7 +51,7 @@ class active_client extends Controller
     {
         $clientData = activeclient::find($id);
         $countJobOrder = DB::table('job_orders')->where('client_id', 'LIKE', "$id")->count();
-        $JobOrder = JobOrder::where("client_id", "LIKE", "$id")->get();
+        //$JobOrder = JobOrder::where("client_id", "LIKE", "$id")->get();
         $medical = DB::table('applicants')->where('client_id', 'LIKE', "$id")->where('in_process_status', 'LIKE', 'Medical')->count();
         $visa = DB::table('applicants')->where('client_id', 'LIKE', "$id")->where('in_process_status', 'LIKE', 'Visa')->count();
         $OEC = DB::table('applicants')->where('client_id', 'LIKE', "$id")->where('in_process_status', 'LIKE', 'OEC')->count();
@@ -58,8 +59,23 @@ class active_client extends Controller
         $total = $medical + $OEC + $visa;
         $appcount = Applicant::where('client_id',"$id");
         $getposition = Applicant::where('client_id', "$id")->get('position' , 'job_application_status');
-        //$JobOrder = DB::table('job_orders')->where('joborder_id', "$getposition")->where('job_application_status', "LIKE", 'Line Up');
+        // $JobOrder = Applicant::select(['status'])
+        //         ->withCount(['joborders' => function($query) {
+        //             $query->whereHas('status', function ($query) {
+        //                 $query->where('client_id', 1);
+        //         });
+        //     }])
+        // ->get();
+        // $status = Applicant::withCount(['status'])->get();
+        // dd($status);
 
+
+        $posts = Applicant::withCount(['status' => function (Builder $query) {
+            $query->where('clients_id', 'like', 1);
+        }])->get();
+
+        // echo $posts[0]->status_count;
+        // echo $posts[0]->status_count;
         return view('client_jobsite', compact('clientData', 'countJobOrder', 'JobOrder', 'medical', 'visa', 'OEC', 'linedup', 'total', 'appcount', 'getposition'));
     }
     //      return $this->getallposition($id);//->compact('clientData', 'countJobOrder', 'JobOrder', 'medical', 'visa', 'OEC', 'linedup', 'total', 'appcount', 'getposition'));

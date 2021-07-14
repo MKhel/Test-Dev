@@ -60,17 +60,17 @@
             
             <ul class="list-unstyled components">
                 <li>
-                    <a data-toggle="collapse" href="#dashboard" class="sideMenu">
+                    <a href="/statusdashboard" class="sideMenu">
                     <div class="icon-container">
                     <i class="fas fa-chart-pie"></i>
                     </div>
                     <span class="nav__label">Dashboard</span> 
                     </a>
-                    <div class="collapse list-unstyled" id="dashboard">
+                    <!-- <div class="collapse list-unstyled" id="dashboard">
                             <a class="subMenu" href="/statusdashboard"><label>Overview</label></a>
                             <a class="subMenu" href="/client"><label>Active Client</label></a>
                             <a class="subMenu" href="/"><label>Reports</label></a>
-                    </div>
+                    </div> -->
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#clients" class="sideMenu">

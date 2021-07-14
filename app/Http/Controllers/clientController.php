@@ -19,7 +19,7 @@ class clientController extends Controller
     public function index()
     {
         $clientData = activeclient::all();
-        return view('activeclient', compact('clientData'));
+        return view('Client.activeclient', compact('clientData'));
 
         //echo view('activecl ient');
     }
@@ -145,10 +145,10 @@ class clientController extends Controller
      */
     public function destroy($id)
     {
-        $clientData = activeclient::find($id);
-        $JobOrder = JobOrder::findorfail('client_id','LIKE',"$id");
         
-        $clientData->delete();
-        return view('dashboard')->with('client_added', 'Client record has been inserted');
+        $delclient = DB::table('applicants')
+        ->where('client_id', $id)
+        ->delete();
+        return back()->with('client_update', 'Client deleted sucessfully');
     }
 }

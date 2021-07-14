@@ -5,16 +5,21 @@ Active Client
 @endsection
 
 @section('content')
+
 <div class="row">
 <div class="col-md-12 header-top-text mb-4">
+
         <div class="mt-4 ml-4 mb-3">
+      
         <h2>Client Selection</h2>
         <p>Please select client to add new joborder. </p>
         
         </div>
+        
     <hr>
-      
-      
+    <div class=" ml-4 ">
+    {{ Breadcrumbs::render('clientselection') }}
+    </div>
 </div>
 
 </div>

@@ -178,35 +178,47 @@ body {
 
 }
 @media screen and (max-width: 400px){
-  
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+    }
 
-.main{
-    width: calc(100% - 60px);
-    left: 60px;
-    position: absolute;
-}
-.sidebar{
-  width: -280px;
-  position: fixed;
-}
-.sidebar-header{
-  display: none;
-}
-.collapse{
-  display: none;
-}
-.top-nav-container{
-  width: calc(100% - 60px);
-  left: 60px;
-}
-.collapse a:hover{
-  color: #f3f3f3;
-}
-.sidebar-header-logo{
-  display: block;
-  padding: 20px 0px 0px 10px;
-  transition: all 0.1s;
-}
+    .main{
+        width: calc(100% - 60px);
+        left: 0px;
+        position: absolute;
+    }
+    .sidebar{
+      width: -400px;
+      position: fixed;
+    }
+    /* .sidebar-header{
+      display: none;
+    } */
+    .sidebar-header-logo {
+      display: none;
+    }
+    /* .collapse{
+      display: none;
+    } */
+    .top-nav-container{
+      width: calc(100% - 60px);
+      left: 0px;
+    }
+    .collapse a:hover{
+      color: #f3f3f3;
+    }
+    .sidebar-header-logo{
+      display: block;
+      padding: 20px 0px 0px 10px;
+      transition: all 0.1s;
+    }
+    .footer {
+      display: none;
+    }
 
   
 }
@@ -224,7 +236,7 @@ body {
     position: absolute;
 }
 .sidebar.active{
-  width: -280px;
+  width: -400px;
   position: fixed;
 }
 .sidebar-header.active{
@@ -234,8 +246,10 @@ body {
   display: none;
 }
 .top-nav-container.active{
+  position: fixed;
   width: calc(100% - 60px);
   left: 60px;
+  
 }
 .collapse.active ul li a:hover{
   color: #f3f3f3;
@@ -578,11 +592,17 @@ body {
     font-weight: bold;
     float: right;
     transition: .5s;
+  
   }
-  .primary-btn {
-    padding: 15px;
+  .primary-btn a{
+    color: white;
     text-decoration: none;
-    
+    justify-content: center;
+    align-items: center;
+  }
+  .btns {
+    background-color: #3bb78f;
+    background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
   }
   
   /*End Job Position Card*/
@@ -742,4 +762,50 @@ body {
   border-radius: 16px;
   border: none;
   box-shadow: 2px -1px 5px -3px rgba(0,0,0,0.25);
+}
+
+
+/* Breadcrumbs */
+
+.breadcrumb {
+padding: 10px;
+background-color: transparent;
+}
+
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #3bb78f;
+  color: white;
+  font-size: 17px;
+  border-left: none;
+  cursor: pointer;
+  border: none;
+}
+
+form.example button:hover {
+  background: #3bb78f;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+form.example input::after {
+  content: "";
+  clear: both;
+  display: table;
 }

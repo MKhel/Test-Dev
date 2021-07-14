@@ -20,7 +20,7 @@ class JobController extends Controller
     public function index()
     {
         $clientJoborder = JobOrder::all();
-        return view('Client.allJobOrder', compact('clientJoborder'));
+        return view('JobOrders.allJobOrder', compact('clientJoborder'));
     }
 
     /**

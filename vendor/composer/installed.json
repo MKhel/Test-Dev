@@ -119,6 +119,80 @@
             "install-path": "../brick/math"
         },
         {
+            "name": "diglactic/laravel-breadcrumbs",
+            "version": "v7.0.0",
+            "version_normalized": "7.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/diglactic/laravel-breadcrumbs.git",
+                "reference": "994808137d69672473f7f4df9b96d731c7e2ed74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/diglactic/laravel-breadcrumbs/zipball/994808137d69672473f7f4df9b96d731c7e2ed74",
+                "reference": "994808137d69672473f7f4df9b96d731c7e2ed74",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition-contracts": "^1.0",
+                "laravel/framework": "^6.0 || ^7.0 || ^8.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "conflict": {
+                "davejamesmiller/laravel-breadcrumbs": "*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.10 || ^5.9 || ^6.4",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "^8.5 || ^9.4",
+                "spatie/phpunit-snapshot-assertions": "^2.2 || ^4.2"
+            },
+            "time": "2021-05-23T16:43:52+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Diglactic\\Breadcrumbs\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Breadcrumbs": "Diglactic\\Breadcrumbs\\Breadcrumbs"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Diglactic\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sheng Slogar",
+                    "email": "sheng@diglactic.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Dave James Miller",
+                    "email": "dave@davejamesmiller.com",
+                    "role": "Original Creator"
+                }
+            ],
+            "description": "A simple Laravel-style way to create breadcrumbs.",
+            "homepage": "https://github.com/diglactic/laravel-breadcrumbs",
+            "keywords": [
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/diglactic/laravel-breadcrumbs/issues",
+                "source": "https://github.com/diglactic/laravel-breadcrumbs/tree/v7.0.0"
+            },
+            "install-path": "../diglactic/laravel-breadcrumbs"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "2.0.3",
             "version_normalized": "2.0.3.0",
@@ -7764,7 +7838,6 @@
         "doctrine/instantiator",
         "facade/flare-client-php",
         "facade/ignition",
-        "facade/ignition-contracts",
         "fakerphp/faker",
         "filp/whoops",
         "hamcrest/hamcrest-php",

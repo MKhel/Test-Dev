@@ -5,12 +5,28 @@ Add Active Client
 @endsection
 
 @section('content')
+<div class="row">
+<div class="col-md-12 header-top-text mb-4">
+        <div class="mt-4 ml-4 mb-3">
+        <div class="col-sm-8">
+        <h2>Add New Client</h2>
 
+        {{ Breadcrumbs::render('addclient') }}
+        </div>
+        
+</div>
+      
+      
+</div>
+
+</div>
 @if(Session::has('client_added'))
                 <div class="alert alert-success" role="alert">
                       {{Session::get('client_added')}}
                 </div>
             @endif
+
+
 <div class="row">
   <div class="container-fuild">
       <div class="card flex-fill">
@@ -18,12 +34,9 @@ Add Active Client
         <div class="card-body">
         <div class="row">
           
-          <div class="col-lg-6 col-sm-12 col-md-12">
+          <div class="col-lg-6 col-sm-12 col-md-12" style="padding: 30px;">
             <form action="/client" class="row g-3 needs-validation" method="POST" enctype="multipart/form-data">
               @csrf  
-              <div class="col-md-12 mb-4 mt-3 text-header" >
-                    <h3>Add New Client</h3>
-              </div>
               
                 
                 

@@ -5,15 +5,21 @@ Add Job Orders
 @endsection
 
 @section('content')
-<div class="content-container">
-<div class="row">
-<div class="col-lg-12">
-      <div class="mt-4 ml-4 mb-3">
-        <h1 class="h2">Add Job Order for {{$clientData->clients_name}}</h1>
-        </div>
-        <hr>
-</div>
 
+<div class="row">
+  <div class="col-md-12 header-top-text mb-4">
+          <div class="mt-4 ml-4 mb-3">
+            <div class="col-sm-8">
+            <h2>Add Job Order for {{$clientData->clients_name}}</h2>
+
+            {{ Breadcrumbs::render('addclient') }}
+            </div>
+            
+          </div>
+        
+        
+  </div>
+</div>
 @if(Session::has('client_added'))
 <div class="col-lg-12">
                 <div class="alert alert-success" role="alert">
@@ -22,14 +28,10 @@ Add Job Orders
 </div>
             @endif
 
-</div>
+
 <div class="row">
-<div class="form-container">
+<div class="form-container" style="padding: 50px;">
 <form id="form-jo" action="/joborder" class="row g-3 needs-validation" method="POST" novalidat>
-  
-    <div class="col-md-12 form-header">
-        <h3 class="text-align-center">Add Job Order</h3>
-    </div>
     
     <div class="col-md-12 mb-3">
             <label for="inputDescription" class="form-label">Client ID</label>
@@ -95,7 +97,11 @@ Add Job Orders
 </div>
 
 </div>
-</div>
+
+
+<br>
+<br>
+<br>
 @endsection
 
 @yield('footer')
