@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2021 at 04:46 AM
+-- Generation Time: Jul 14, 2021 at 08:29 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -173,7 +173,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"rrjm_database\",\"table\":\"applicants\"},{\"db\":\"rrjm_database\",\"table\":\"job_orders\"},{\"db\":\"rrjm_database\",\"table\":\"migrations\"},{\"db\":\"rrjm_database\",\"table\":\"clients\"},{\"db\":\"rrjm_database\",\"table\":\"failed_jobs\"},{\"db\":\"rrjm_database\",\"table\":\"active_clients\"},{\"db\":\"rrjm_database\",\"table\":\"activeclients\"},{\"db\":\"rrjm_database\",\"table\":\"flights\"},{\"db\":\"rrjm_database\",\"table\":\"password_resets\"},{\"db\":\"rrjm_database\",\"table\":\"table_client\"}]');
+('root', '[{\"db\":\"rrjm_database\",\"table\":\"activeclients\"},{\"db\":\"rrjm_database\",\"table\":\"applicants\"},{\"db\":\"rrjm_database\",\"table\":\"job_orders\"},{\"db\":\"rrjm_database\",\"table\":\"users\"},{\"db\":\"rrjm_database\",\"table\":\"failed_jobs\"},{\"db\":\"rrjm_database\",\"table\":\"clients\"},{\"db\":\"rrjm_database\",\"table\":\"admins\"},{\"db\":\"rrjm_database\",\"table\":\"active_clients\"},{\"db\":\"performance_schema\",\"table\":\"session_connect_attrs\"},{\"db\":\"rrjm_database\",\"table\":\"password_resets\"}]');
 
 -- --------------------------------------------------------
 
@@ -244,6 +244,13 @@ CREATE TABLE `pma__table_uiprefs` (
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
 
+--
+-- Dumping data for table `pma__table_uiprefs`
+--
+
+INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, `last_update`) VALUES
+('root', 'rrjm_database', 'applicants', '{\"sorted_col\":\"`applicants`.`applicant_id`  DESC\",\"CREATE_TIME\":\"2021-06-04 23:15:06\"}', '2021-06-30 09:50:44');
+
 -- --------------------------------------------------------
 
 --
@@ -280,7 +287,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2021-06-02 19:46:41', '{\"Console\\/Mode\":\"show\",\"NavigationWidth\":241}');
+('root', '2021-07-14 06:28:37', '{\"Console\\/Mode\":\"show\",\"NavigationWidth\":241}');
 
 -- --------------------------------------------------------
 
@@ -483,6 +490,7 @@ USE `rrjm_database`;
 CREATE TABLE `activeclients` (
   `id` int(10) UNSIGNED NOT NULL,
   `clients_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jobsite` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descriptions` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poea_accredition` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -496,25 +504,21 @@ CREATE TABLE `activeclients` (
 -- Dumping data for table `activeclients`
 --
 
-INSERT INTO `activeclients` (`id`, `clients_name`, `jobsite`, `descriptions`, `poea_accredition`, `valid_until`, `file`, `created_at`, `updated_at`) VALUES
-(9, 'TAV', 'Qatar', 'Tepe Akfen Investment Cinstruction', 'POEA 10165058', '2023-02-17', '1618411740.jpg', '2021-04-13 22:49:00', '2021-04-13 22:49:00'),
-(12, 'RRJm', 'Philippines', 'This is RRJM from Philippines', 'POEA 1231413', '2021-04-28', '1618756605.jpg', '2021-04-17 22:36:45', '2021-04-17 22:36:45'),
-(13, 'Michael', 'asdas', 'asdad', 'asdasdasd', '2021-04-01', '1619461807.jpg', '2021-04-26 02:30:07', '2021-04-26 02:30:07'),
-(14, 'Meralco', 'Saudi', 'This is meralco client', 'POEA12141241', '2021-04-26', '1619710193.jpg', '2021-04-28 23:29:53', '2021-04-28 23:29:53'),
-(15, 'GULF HOUSE RECRUITMENT AGENCY', 'KSA', 'This is GHRA', '10325172', '2021-05-15', '1622443001.png', '2021-05-30 14:36:41', '2021-05-30 14:36:41');
+INSERT INTO `activeclients` (`id`, `clients_name`, `country`, `jobsite`, `descriptions`, `poea_accredition`, `valid_until`, `file`, `created_at`, `updated_at`) VALUES
+(1, 'TAV', 'Qatar', 'Doha', 'This is Qatar', 'POEA 1231341', '2021-07-08', '1625555856.jpg', '2021-07-05 23:17:36', '2021-07-05 23:17:36'),
+(2, 'RRJM', 'Philippines', 'Mandaluyong', 'RRJM client from philippines', 'POEA 123112', '2021-06-30', '1626077384.png', '2021-07-12 00:09:44', '2021-07-12 00:09:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `active_clients`
+-- Table structure for table `admins`
 --
 
-CREATE TABLE `active_clients` (
-  `client_id` int(10) UNSIGNED NOT NULL,
-  `clients_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descriptions` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poea_accredition` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `valid_until` date NOT NULL,
+CREATE TABLE `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -545,15 +549,7 @@ CREATE TABLE `applicants` (
 --
 
 INSERT INTO `applicants` (`applicant_id`, `first_name`, `last_name`, `gender`, `age`, `position`, `client_id`, `joborder_id`, `in_process_status`, `job_application_status`, `created_at`, `updated_at`) VALUES
-(1, 'Michael', 'Latagan', 'Male', '23', 'Engineer', 9, 1, 'Medical', 'Line Up', '2021-05-31 20:57:12', '2021-05-31 20:57:12'),
-(2, 'Diego', 'Abadiano', 'Male', '23', 'Engineer', 9, 1, 'Visa', 'Line Up', '2021-05-31 22:14:55', '2021-05-31 22:14:55'),
-(3, 'Juan', 'Dela Cruz', 'Male', '23', 'Engineer', 15, 9, 'Visa', 'Selected', '2021-06-01 14:28:28', '2021-06-01 14:28:28'),
-(4, 'Brody', 'Brad', 'Male', '35', 'Engineer', 12, 8, 'OEC', 'Signed JOL', '2021-06-01 15:30:01', '2021-06-01 15:30:01'),
-(5, 'ASDA', 'ASD', 'Male', '23', 'Engineer', 9, 1, 'Medical', 'Line Up', '2021-06-02 02:54:51', '2021-06-02 02:54:51'),
-(6, 'ASDA', 'ASD', 'Male', '23', 'Engineer', 9, 1, 'Medical', 'Line Up', '2021-06-02 02:57:15', '2021-06-02 02:57:15'),
-(7, 'ASDA', 'ASD', 'Male', '23', 'Engineer', 9, 1, 'Medical', 'Line Up', '2021-06-02 04:11:16', '2021-06-02 04:11:16'),
-(8, 'ASDA', 'ASD', 'Male', '23', 'Engineer', 9, 1, 'Medical', 'Line Up', '2021-06-02 04:11:51', '2021-06-02 04:11:51'),
-(9, 'Marie', 'Nicollas', 'Male', '28', 'Nurse', 9, 7, 'Medical', 'Line Up', '2021-06-02 17:22:55', '2021-06-02 17:22:55');
+(1, 'Mike', 'Latagan', 'Male', '23', 'Engineer', 1, 1, 'Medical', 'Line Up', '2021-07-05 23:19:13', '2021-07-05 23:19:13');
 
 -- --------------------------------------------------------
 
@@ -565,6 +561,7 @@ CREATE TABLE `clients` (
   `id` int(10) UNSIGNED NOT NULL,
   `clients_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descriptions` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jobsite` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poea_accredition` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration_date` date NOT NULL,
@@ -617,6 +614,7 @@ CREATE TABLE `job_orders` (
   `joborder_id` int(10) UNSIGNED NOT NULL,
   `client_id` int(11) NOT NULL,
   `clients_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jobsite` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `poea_accredition` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `actual_position` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -625,9 +623,6 @@ CREATE TABLE `job_orders` (
   `no_ofworker` int(11) NOT NULL,
   `basic_salary` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slot_expiration` date NOT NULL,
-  `lineup` int(11) NOT NULL,
-  `selected` int(11) NOT NULL,
-  `jol` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -636,16 +631,9 @@ CREATE TABLE `job_orders` (
 -- Dumping data for table `job_orders`
 --
 
-INSERT INTO `job_orders` (`joborder_id`, `client_id`, `clients_name`, `jobsite`, `poea_accredition`, `actual_position`, `position`, `gender`, `no_ofworker`, `basic_salary`, `slot_expiration`, `lineup`, `selected`, `jol`, `created_at`, `updated_at`) VALUES
-(1, 9, 'TAV', 'Qatar', 'POEA 10165058', 'Civil Engineer', 'Engineer', 'Male', 2, '120000', '2021-04-22', 1, 1, 1, '2021-04-14 00:21:33', '2021-04-14 00:21:33'),
-(2, 9, 'TAV', 'Qatar', 'POEA 10165058', 'Site Engineer', 'Engineer', 'Male', 2, '190000', '2021-04-23', 1, 1, 1, '2021-04-14 00:23:01', '2021-04-14 00:23:01'),
-(3, 10, 'TECH', 'USA', 'POEA 123', 'CIVIL ENGINEER', 'ENIGNER', 'Male', 19, '12313131', '2021-04-18', 0, 0, 0, '2021-04-14 00:29:59', '2021-04-14 00:29:59'),
-(4, 9, 'TAV', 'Qatar', 'POEA 10165058', 'Foreman', 'Foreman', 'Male', 10, '60,000', '2021-05-03', 0, 0, 0, '2021-04-14 10:34:16', '2021-04-14 10:34:16'),
-(5, 10, 'TECH', 'USA', 'POEA 123', 'Admin Personnel', 'Admin', 'Male', 1, '17,000', '2021-04-07', 0, 0, 0, '2021-04-14 10:42:48', '2021-04-14 10:42:48'),
-(6, 10, 'TECH', 'USA', 'POEA 123', 'CS', 'IT', 'Male', 2, '1000000', '2021-04-06', 0, 0, 0, '2021-04-14 23:53:27', '2021-04-14 23:53:27'),
-(7, 9, 'TAV', 'Qatar', 'POEA 10165058', 'Nursing', 'Nurse', 'Female', 5, '12000', '2021-04-13', 0, 0, 0, '2021-04-17 22:32:27', '2021-04-17 22:32:27'),
-(8, 12, 'RRJm', 'Philippines', 'POEA 1231413', 'Civil Engineer', 'Engineer', 'Male', 10, '19000', '2021-04-21', 0, 0, 0, '2021-04-17 22:37:57', '2021-04-17 22:37:57'),
-(9, 15, 'GULF HOUSE RECRUITMENT AGENCY', 'KSA', '10325172', 'Civil Engineer', 'Engineer', 'Male', 10, '20000', '2021-05-08', 0, 0, 0, '2021-05-30 14:55:38', '2021-05-30 14:55:38');
+INSERT INTO `job_orders` (`joborder_id`, `client_id`, `clients_name`, `country`, `jobsite`, `poea_accredition`, `actual_position`, `position`, `gender`, `no_ofworker`, `basic_salary`, `slot_expiration`, `created_at`, `updated_at`) VALUES
+(1, 1, 'TAV', 'Qatar', 'Doha', 'POEA 1231341', 'Civil Engineer', 'Engineer', 'Male', 12, '20,000', '2021-07-02', '2021-07-05 23:18:28', '2021-07-05 23:18:28'),
+(2, 1, 'TAV', 'Qatar', 'Doha', 'POEA 1231341', 'Nurse', 'Assistant Nurse', 'Female', 20, '30,000', '2021-07-30', '2021-07-07 02:53:28', '2021-07-07 02:53:28');
 
 -- --------------------------------------------------------
 
@@ -664,15 +652,15 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2021_03_26_070333_create_flights_table', 1),
-(5, '2021_03_27_072850_create_clients_table', 1),
-(6, '2021_04_05_151133_create_active_clients', 1),
-(7, '2021_04_05_155239_create_activeclients_table', 1),
-(8, '2021_04_07_121133_create_job_orders_table', 1),
-(9, '2021_05_13_031858_create_applicants_table', 1);
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+(3, '2021_03_26_070333_create_flights_table', 1),
+(4, '2021_03_27_072850_create_clients_table', 1),
+(5, '2021_04_05_155239_create_activeclients_table', 1),
+(6, '2021_04_07_121133_create_job_orders_table', 1),
+(7, '2021_05_13_031858_create_applicants_table', 1),
+(8, '2021_07_05_142944_create_admins_table', 1),
+(9, '2021_07_06_000000_create_users_table', 1);
 
 -- --------------------------------------------------------
 
@@ -686,6 +674,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('michaellatagan063@gmail.com', '$2y$10$2ehsZjSAliR.59XCEKunKuY.07BV2ujr.nM8WusQnCk7pTIC5UUxO', '2021-07-06 04:53:50');
+
 -- --------------------------------------------------------
 
 --
@@ -696,12 +691,25 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(5, 'Michael Latagan', 'm@gmail.com', '1', NULL, '$2y$10$J8GI5aDwpcf4QWBRW1TdMeTZagtgi4NzpVZEPePVIJkSd96psxY/m', NULL, '2021-07-06 04:31:47', '2021-07-06 04:31:47'),
+(6, 'Michael Latagan', 'michaellatagan063@gmail.com', '2', NULL, '$2y$10$GUbDJtslh59AOcvshk6F9uDyXIRo.HtQrbDFrWYHcmkNbeQqdc5ZK', NULL, '2021-07-06 04:48:04', '2021-07-06 04:48:04'),
+(7, 'Administrator', 'admin@gmail.com', '1', NULL, '$2y$10$kX0TuAa/OK9VqsQ8zvBRY.605jndyB94qhofiMLxHOHNFMPAQOD.W', NULL, '2021-07-07 06:49:53', '2021-07-07 06:49:53'),
+(8, 'Recruitment', 'r@gmail.com', '1', NULL, '$2y$10$rCl1YeN2KJNNdyhHDS6Ma.CBMmY0yLqhODJ74jv2pKgYP5UrWvNAO', NULL, '2021-07-07 07:12:59', '2021-07-07 07:12:59'),
+(9, 'Recruitment User', 'ru@gmail.com', '2', NULL, '$2y$10$bD.dr/DKKbpNIOJHyWwTr.ySLrkyiucddw2KvcpuD6ngAi1oVUyi2', NULL, '2021-07-07 08:42:19', '2021-07-07 08:42:19'),
+(10, 'Mike', 'user@gmail.com', '2', NULL, '$2y$10$XTLcvISnxTBJP157hl0hg.P75Zk7KNJ4XUT/DqQqCrzAAvWNqWvHi', NULL, '2021-07-08 20:39:26', '2021-07-08 20:39:26');
 
 --
 -- Indexes for dumped tables
@@ -714,10 +722,11 @@ ALTER TABLE `activeclients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `active_clients`
+-- Indexes for table `admins`
 --
-ALTER TABLE `active_clients`
-  ADD PRIMARY KEY (`client_id`);
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
 -- Indexes for table `applicants`
@@ -777,19 +786,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activeclients`
 --
 ALTER TABLE `activeclients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `active_clients`
+-- AUTO_INCREMENT for table `admins`
 --
-ALTER TABLE `active_clients`
-  MODIFY `client_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `applicant_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `applicant_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -813,7 +822,7 @@ ALTER TABLE `flights`
 -- AUTO_INCREMENT for table `job_orders`
 --
 ALTER TABLE `job_orders`
-  MODIFY `joborder_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `joborder_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -825,7 +834,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Database: `test`
 --
