@@ -57,7 +57,7 @@ Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
 
 
 // Home > Select Job > [Add New Applicant]
-Breadcrumbs::for('clients', function (BreadcrumbTrail $trail, $client) {
-    $trail->parent('home');
-    $trail->push($client->title, route('client', $client));
-});
+// Breadcrumbs::for('clients', function (BreadcrumbTrail $trail, $client) {
+//     $trail->parent('home');
+//     $trail->push($client->title, route('client', $client));
+// });

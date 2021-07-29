@@ -1,75 +1,66 @@
-@extends('layouts.apps')
+@extends('layouts.app')
 
 @section('title')
-Client Job Order
+Test Tab
 @endsection
 
 @section('content')
-
-<div class="content-container">
-          <div class="col-md-12">
-                <div class="mt-4 ml-4 mb-3">
-                <h2> Job Orders for All Clients
-                </h2>
-                <p></p>
-                
-                </div>
+<div class="row">
+						<div class="col-xl-6">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="mt-0 header-title mb-4">Latest Projects</h4>
+									<div class="container" style="overflow-x:auto;">
+        <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+											<thead>
+												<tr>
+                          							<th scope="col">Position</th>
+													<th scope="col">Line-Up</th>
+													<th scope="col">Selected</th>
+													<th scope="col">Signed_JOL</th>
+                          							<th scope="col">Report</th>
+													<th scope="col">Status</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!-- start 1 -->
+												@foreach($poss_data as $pos_datas)
+												<tr> 
+													
+													<td>{{ $pos_datas->position}}</td>
+													
+													@foreach($position_array as $post_counts)
+                          							<td>{{ $post_counts}}</td>
+													  
+													  @endforeach
+													
+													
+													<td><span class="badge badge-warning">Delete Applicant</span></td>
+                          							<td><span class="badge badge-primary">Success</span></td>
+													  
+												</tr>
+												@endforeach  
+												<!-- end 1 -->
+												
+												
+												
+											</tbody>
+                      <tfoot>
+                          <tr>
+                              <th>ID</th>
+                              <th>Department</th>
+                              <th>Name</th>
+                              <th>Date</th>
+                              <th>Report</th>
+                              <th>Status</th>
+                          </tr>
+                      </tfoot>  
+										</table>
+									</div>
             
-              
-              
-        </div>
-          </div>
-        <div class="table-container">
-          <table class="table bg-white">
-        
-            <thead>
-              <tr>
-                
-                <th>Position</th>
-                <th>Line Up</th>
-                <th>Selected</th>
-                <th>Signed JOL</th>
-                
-              </tr>
-            </thead>
             
-            <tbody>
 
 
-           
-
-            
-                <tr>
-                
-                @foreach($data as $count_datas)
-                    
-                    @endforeach
-                  
-                   
-
-                    @foreach($count_data as $data_count)
-                    <td>{{$count_datas->position}}</td> 
-                    <td>{{$data_count[0]}}</td>
-                    <td>{{$data_count[1]}}</td>
-                    <td>{{$data_count[2]}}</td>
-                   
-                 
-                        
-                </tr>         
-                @endforeach 
-                
-                
-           
-
-            
-              
-
-            
-        
-            </tbody>
-          </table>
-        
-          </div>
 @endsection
 @section('footer')
 

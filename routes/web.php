@@ -6,8 +6,11 @@ use App\Http\Controllers\clientController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\userController;
 use App\Models\activeclient;
+use App\Models\Applicant;
 use App\Models\client;
+use App\Models\JobOrder;
 use App\Models\new_client;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -171,6 +174,140 @@ Route::get('/insert', function () {
 	]);
 	return 'Sucessfully';
 });
+
+Route::get('/testtab', function(){
+	$id = "1";
+	$data = Applicant::all();
+	$position_array = array();
+	$pos_datas = DB::table('applicants')->where('client_id', 'LIKE', "$id")->get();
+	$poss_data = json_decode($pos_datas);
+	//return $poss_data;
+	//print_r($position_array);
+	//print_r($poss_data);	//dd($data,'as');]\
+	foreach ($poss_data as $positionData) {
+			$jobstat = $positionData->job_application_status;
+			$appID = $positionData->applicant_id;
+			$pos_data = $positionData->position;
+			//$datacount = array_count_values($positionData);
+			//$position_array= [$pos_data];
+			$position_array[$pos_data]=$jobstat;
+	
+			//array_push($position_array, $pos_data);
+			
+		}
+	// // foreach ($pos_data as $positionData) {
+	// // 	$jobstat = $positionData->job_application_status;
+	// // 	$pos_data = $positionData->position;
+	// // 	//$datacount = array_count_values($positionData);
+	// // 	//$position_array[$pos_data]= 'position';
+	// // 	//$position_array=[$pos_data];
+
+	// // 	array_push($position_array, $pos_data);
+	// // }
+	$Lined_up = DB::table('applicants')->where('applicant_id', "$appID")->where('position', "$pos_data")->where('job_application_status', "Line Up")->get()->count();
+    $Selected = DB::table('applicants')->where('applicant_id', "$appID")->where('position', "$pos_data")->where('job_application_status', "Selected")->get()->count();
+    $Signed_JOL = DB::table('applicants')->where('applicant_id', "$appID")->where('position', "$pos_data")->where('job_application_status', "Signed JOL")->get()->count();
+	$poss_count_array = array($Lined_up, $Selected, $Signed_JOL);
+	$position_count_array = array();
+	$position_stat_array = array();
+	//$poss_array = array($position_array);
+	foreach ($position_array as $positionData=>$jobstat) {
+		$position_count_stat = ($positionData);
+		array_push($position_count_array, $position_count_stat);
+		array_push($position_stat_array, $jobstat);
+	}
+	// 	//$datacount = array_count_values($positionData);
+	// 	//$position_array[$pos_data]= 'position';
+	// 	//$position_array=[$pos_data];
+
+	// 	//array_push($position_array, $pos_data);
+	// }
+	
+	// // $Lined_up = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "$jobstat")->get()->count();
+	// // $post_count = array($Lined_up);
+	// //$array = ($data);
+	// //$pos_array = array($position_array);
+	// //$datas = var_dump(array_count_values($array));
+	print_r($position_stat_array);
+	print_r($position_count_array);
+	print_r($position_array);
+	// print_r($pos_data);
+	// //$pos_data = array($position_array);
+	return view('table',compact( 'position_array', 'poss_data'));
+
+	// // $array = [
+	// // 	0 => 'easy',
+	// // 	1 => 'easy',
+	// // 	2 => 'easy',
+	// // 	3 => 'medium',
+	// // 	4 => 'medium',
+	// // 	5 => 'medium',
+	// // 	6 => 'hard',
+	// // 	7 => 'hard',
+	// // 	8 => 'hard',
+	// // 	9 => 'hard',
+	// //    10 => 'hard'
+	// // ];
+	
+	// // //echo "<pre>";
+	// // //print_r($array);
+	// // // $data = var_dump(array_count_values($array));
+	// // // print_r($data);
+	// // //return dd($data);
+
+	// // $stats = [
+	// // 	'easy' => 0,
+	// // 	'medium' => 0,
+	// // 	'hard' => 0,
+	// // ];
+	
+	// // // Alternatively dynamic way:
+	// // $a = array_flip(array_unique($array));
+	// // $b = array_fill_keys(array_keys($a), 0);
+	
+	// // foreach($array as $value) {
+	// // 	$stats[$value]++; // Static Way
+	// // 	$b[$value]++;  // Dynamic way
+	// // }
+	
+	// // echo "<pre>";
+	// // print_r($stats);
+	// // print_r($b);
+	// // exit;
+	
+        // $id = "1";
+        // $position_array = array();
+        // $position_data  = DB::table('applicants')->where('client_id', "$id")->get();
+        // $position_data = json_decode($position_data);
+        
+        // if( ! empty($position_data)) {
+        //     foreach ($position_data as $positionData) {
+        //         $jobstat = $positionData->job_application_status;
+        //         $pos_data = $positionData->position;
+        //         $position_array[$pos_data]= $jobstat;
+        //     }
+                
+        // }
+		// $Lined_up = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "Line Up")->get()->count();
+        // $Selected = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "Selected")->get()->count();
+        // $Signed_JOL = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "Signed JOL")->get()->count();
+        // $post_count = array($Lined_up, $Selected, $Signed_JOL);
+
+		// $position_count_array = array();
+        // $position_stat_array = array();
+		// $position_array = $position_array;
+        
+        //     foreach ($position_array as $position_data=>$jobstat){
+        //         $position_count_stat = $post_count;
+        //         array_push($position_count_array, $position_count_stat);
+        //         array_push($position_stat_array, $jobstat);
+        //     }
+        
+		// print_r($position_count_array);
+		// return view('table',compact( 'position_count_array', 'pos_data'));
+	
+});
+
 
 Route::get('/inserta', function () {
 	activeclient::insert([

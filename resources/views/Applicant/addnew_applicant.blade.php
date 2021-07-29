@@ -12,7 +12,7 @@ Add new applicant
         <div class="col-sm-8">
         <h2>Adding new applicant for {{$JobPosition[0]->position}}</h2>
 
-        {{ Breadcrumbs::render('clients') }}
+
         </div>
         
 </div>

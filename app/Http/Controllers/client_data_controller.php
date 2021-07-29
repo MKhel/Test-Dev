@@ -16,8 +16,8 @@ class client_data_controller extends Controller
         
     }
     
-    function getallposition($id){
-        
+    function getallposition(){
+        $id = "2";
         $position_array = array();
         $position_data  = DB::table('applicants')->where('client_id', "$id")->get();
         //$position_data  = DB::table('applicants')->where('client_id', "$id")->pluck('job_application_status', 'position');
@@ -31,17 +31,17 @@ class client_data_controller extends Controller
             foreach ($position_data as $positionData) {
                 $jobstat = $positionData->job_application_status;
                 $pos_data = $positionData->position;
-               //$datacount = array_count_values($data);
+                //$datacount = array_count_values($positionData);
                 $position_array[$pos_data]= $jobstat;
             }
                 
         }
         //return $position_array;
 
-        return $this->getstatuspositiondata();
+        //return $this->getstatuspositiondata();
             
-    }
-    function getcountposition($pos_data) {
+    // }
+    // function getcountposition($pos_data) {
        
         $Lined_up = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "Line Up")->get()->count();
         $Selected = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "Selected")->get()->count();
@@ -51,16 +51,26 @@ class client_data_controller extends Controller
         //$post_count = DB::table('applicants')->where('client_id', $id)->where('position', "$pos_data")->get()->count();
         //$post_count = DB::table('applicants')->where('position', "$pos_data")->where('job_application_status', "$jobstat")->get()->count();
 
-        return $post_count;
-    }
+    //     return $post_count;
+    // }
     
-    function getstatuspositiondata() {
+    // function getstatuspositiondata() {
+        // $position_count_array = array();
+        // $position_array = $this->getallposition();
+        // $position_stat_array = array();
+        // if(! empty( $position_array )) {
+        //     foreach ($position_array as $position_data=>$jobstat){
+        //         $position_count_stat = $this->getcountposition($position_data);
+        //         array_push($position_count_array, $position_count_stat);
+        //         array_push($position_stat_array, $jobstat);
+        //     }
+        // }
+
         $position_count_array = array();
-        $position_array = $this->getallposition();
         $position_stat_array = array();
         if(! empty( $position_array )) {
             foreach ($position_array as $position_data=>$jobstat){
-                $position_count_stat = $this->getcountposition($position_data);
+                $position_count_stat = $post_count;
                 array_push($position_count_array, $position_count_stat);
                 array_push($position_stat_array, $jobstat);
             }
@@ -68,11 +78,11 @@ class client_data_controller extends Controller
         //$pos_data = $this->testcount();
 
     
-        $pos_data = DB::table('applicants')->where('job_application_status', $position_stat_array)->get('position');
-        //return $position_array = $this->testcount();
+        //$pos_data = DB::table('applicants')->where('job_application_status', $position_stat_array)->get('position');
+        //return $position_array = $this->getallposition();
         //return view('table')->with('data', $position_count_array)->with('data', $pos_data);
         //print_r($pos_data->position);
-        return view('table')->with('count_data',$position_count_array)->with('data', $pos_data);
+        //return view('table')->with('count_data',$position_count_array)->with('data', $pos_data);
         //return view('table', compact('position_count_array', 'pos_data'));
         // $pos_array = array('position_count' => $position_count_array);
         // $pos_array = array(['count' => $position_count_array],['position' => $position_stat_array]);\
@@ -80,7 +90,7 @@ class client_data_controller extends Controller
         // return view('table', $pos_array);
         // return view('table')->with('pos', $position_count_array);
         // return view('table', ['pos_array'=>$position_count_array]);
-        // return $pos_array;
+         return $position_count_array;
 
 
         // $id = "1";
