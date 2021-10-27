@@ -16,17 +16,12 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('clients_name');
-            $table->string('descriptions');
             $table->string('country');
             $table->string('jobsite');
+            $table->string('descriptions');
             $table->string('poea_accredition');
-            $table->date('expiration_date');
-            $table->string('poea_position');
-            $table->string('visa_position');
-            $table->integer('number_slot');
-            $table->string('basic_salary'); 
-            $table->integer('number_deployed');
-            $table->date('slot_expiration');
+            $table->date('valid_until');
+            $table->string('file');
             $table->timestamps();
         });
     }

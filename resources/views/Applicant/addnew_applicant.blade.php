@@ -44,12 +44,12 @@ Add new applicant
             <label for="inputDescription" class="form-label">Gender</label>
             <select name="gender" class="custom-select">
             <option  value="Male" required>Male</option>
-            <option  value="Male" required>Female</option>
+            <option  value="Female" required>Female</option>
            </select>
     </div>
     <div class="col-12 mb-3">
         <label for="inputAddress2" class="form-label">Age</label>
-        <input type="text" name="age" class="form-control" id="age" placeholder="Age" required>
+        <input type="number" name="age" class="form-control" id="age" placeholder="Age" required>
     </div>    
     <div class="col-md-12 mb-3">
             <label for="inputDescription" class="form-label">Position</label>

@@ -1,56 +1,5 @@
-@extends('layouts.apps')
-
-@section('title')
-Applicant List
-@endsection
-@section('css')
-    <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/fixedheader/3.2.0/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" type="text/css"href="{{ url('css/app-style.css') }}">
-@endsection
-
-@section('content')
-<div class="content-container">
-
-<div class="row">
-<div class="col-md-12 header-top-text mb-4">
-        <div class="mt-4 ml-4 mb-3">
-        <div class="col-sm-12">
-        <h2>Applicant List</h2>
-
-        {{ Breadcrumbs::render('applicants') }}
-        </div>
-        
-        </div>
-    <hr>
-      
-      
-</div>
-
-</div>
-  
-    
-        @include('Applicant.table')
-   
-
-        <!-- <div class="row">
-          <div class="col-lg-12">
-            <div class="col-lg-12">
-              <h4>Search Job</h4>
-            </div>
-           
-              <div class="col-md-12">
-            <form action="{{ route('web.search' ) }}" method="GET">
-             
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-      <div style="overflow-x:auto;">
-      
-        <table class="table table-borderless" id="myTable" >
-        
-            <thead>
+<table id="table" class="table mydatatable nowrap" style="width:100%;">
+<thead>
               <tr>
                 <th>#</th>
                 <th>First Name</th>
@@ -114,42 +63,4 @@ Applicant List
                   @endforeach
               
             </tbody>
-          </table>
-          <span>
-            
-          </span>
-         
-      </div>
-        </div>        
-</div> -->
-
-
-      <br><br>
-@endsection
-@push('scripts')
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <!-- <script src="//code.jquery.com/jquery-3.5.1.js"></script> -->
-    <script src="//cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
-    <script src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    
-    <script>
-        // $(document).ready( function () {
-        //     $('#table').DataTable( {
-        //             "scrollX": true
-        //         } );
-        //     } );
-
-        $(document).ready(function() {
-            var table = $('#table').DataTable( {
-                responsive: true
-            } );
-        
-            new $.fn.dataTable.FixedHeader( table );
-        } );
-
-    </script>
-@endpush
-@section('footer')
-
-@endsection
+    </table>

@@ -24,15 +24,12 @@ Test Tab
 											</thead>
 											<tbody>
 												<!-- start 1 -->
-												@foreach($poss_data as $pos_datas)
+												@foreach($applicant as $appData)
 												<tr> 
 													
-													<td>{{ $pos_datas->position}}</td>
+													<td>{{ $appData->position}}</td>
 													
-													@foreach($position_array as $post_counts)
-                          							<td>{{ $post_counts}}</td>
-													  
-													  @endforeach
+													
 													
 													
 													<td><span class="badge badge-warning">Delete Applicant</span></td>

@@ -18,7 +18,7 @@ class clientController extends Controller
      */
     public function index()
     {
-        $clientData = activeclient::all();
+        $clientData = client::all();
         return view('Client.activeclient', compact('clientData'));
 
         //echo view('activecl ient');
@@ -67,7 +67,7 @@ class clientController extends Controller
         $fileName = time().'.'.$files->extension();
         $files->move(public_path('images'),$fileName);
 
-        $clientData = new activeclient();
+        $clientData = new client();
         $clientData->clients_name = $request->input('Client_Name');
         $clientData->country = $request->input('Country');
         $clientData->jobsite = $request->input('Jobsite');
@@ -96,7 +96,7 @@ class clientController extends Controller
     
         $clientJoborder = JobOrder::where("clients_name", "LIKE", "$clients_name")->get();
         $clientname = $clients_name;
-        $validuntil = activeclient::where("clients_name", "LIKE", "$clients_name")->value("valid_until");    
+        $validuntil = client::where("clients_name", "LIKE", "$clients_name")->value("valid_until");    
         return view('Client.client_joborder', compact('clientJoborder', 'clientname', 'validuntil'));
         //return $clientData;
         

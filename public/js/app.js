@@ -103,7 +103,18 @@
           onError:function(message, element, status){
             alert(message);
           }
-        });   
-
+        }); 
         
+        
+        var loader = document.querySelector(".loader")
+
+        window.addEventListener("load", vanish);
+
+        function vanish() {
+          loader.classList.add("disppear");
+        }
+
+        $(document).ready( function () {
+          $('#example').DataTable();
+        } );
         

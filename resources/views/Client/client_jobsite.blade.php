@@ -15,7 +15,7 @@ Client Jobsite
   <div class="col-md-3">
     <div class="card">
       <div class="card-body">
-      <img class="img-fluid" style="max-width: 280px; max-height:420px;" src="{{asset('images')}}/{{$clientData->file}}">
+      <img class="img-fluid" src="{{asset('images')}}/{{$clientData->file}}" height="100" width="100">
       </div>
       </div>
   </div>
@@ -97,10 +97,10 @@ Client Jobsite
             <h5>In-Process Workers <span class="badge badge-pill badge-warning">{{$countJobOrder}}</span></h4>
         </div>
         <div class="card-stat mb-4 bg-info">
-            <h5>Open Orders <span class="badge badge-pill badge-info">{{$countJobOrder}}</span></h5>
+            <h5>Open Job Orders <span class="badge badge-pill badge-info">{{$countJobOrder}}</span></h5>
         </div>
     </div>
-  </div>
+  </div>  
   <div class="col-lg-6">
   <div class="content-section">
   <div class="card-header">
@@ -165,7 +165,9 @@ Client Jobsite
             <thead>
               <tr>
                 <th>Position</th>
-                <th colspan="2">Requirement</th>
+                <th>Position</th>
+                <th>Requirement</th>
+                <th></th>
                 <th>Lined Up</th>
                 <th>Selected</th>
                 <th>Signed JOL</th> 
@@ -174,6 +176,7 @@ Client Jobsite
             
             <tbody> 
                     <tr>
+                      <td></td>
                       <td></td>
                       <td>Total</td>
                       <td>Open</td>
@@ -184,16 +187,17 @@ Client Jobsite
 
                     <tr>
                     
-                    @foreach($JobOrder as $JobOrders)
+                    @foreach($appJobs as $JobOrders)
+                      <td>{{$JobOrders->position}}</td>
                       <td>{{$JobOrders->position}}</td>
                       <td>{{$JobOrders->no_ofworker}}</td>
                       <td>{{$JobOrders->no_ofworker}}</td>
                     
                       
-                      <td>{{$JobOrders->lineup}}</td>
+                      <td>{{$JobOrders->applicant_count}}</td>
                    
-                      <td>{{$JobOrders->selected}}</td>
-                      <td>{{$JobOrders->jol}}</td>
+                      <td>{{$JobOrders->lined_up_count}}</td>
+                      <td>{{$JobOrders->signed_jol_count}}</td>
         
                     </tr>
                     @endforeach

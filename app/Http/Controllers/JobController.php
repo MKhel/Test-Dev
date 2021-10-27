@@ -70,7 +70,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $clientData = activeclient::find($id);
+        $clientData = client::find($id);
         $countJobOrder = DB::table('job_orders')->where('client_id', 'LIKE', "$id")->count();
         $JobOrder = JobOrder::where("client_id", "LIKE", "$id")->get();
         

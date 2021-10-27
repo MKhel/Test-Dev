@@ -72,7 +72,7 @@ Add Job Orders
     <input type="text" name="Position" class="form-control" id="inputAddress2" placeholder="Engineer" required>
   </div>
   <div class="col-12 mb-3">
-    <label for="inputAddress2" class="form-label">Position</label>
+    <label for="inputAddress2" class="form-label">Gender</label>
     <select name="Gender" class="custom-select" >
                   <option  value="Male" required>Male</option>
                   <option  value="Female" required>Female</option>

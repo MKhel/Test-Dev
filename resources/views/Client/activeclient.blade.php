@@ -79,6 +79,9 @@ Active Client
         @endforeach
         
 </div>
+
+
+
 @endsection
 @section('footer')
 

@@ -28,12 +28,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    @yield('css')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="antialiased">
 @section('navbar')
 <div class="wrapper">
         <!-- Sidebar -->
@@ -364,7 +364,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -385,7 +385,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                @if (Auth::user()->role == '1' ) <span >Admin</span>
+                                    @elseif (Auth::user()->role == '2') <span >User</span>
+                                    @endif   | {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -413,7 +415,7 @@
             </div>
         </nav>
       
-        <main class="py-4">
+        <main >
             <div class="content">
           <div class="container-fluid">
           @show
@@ -470,7 +472,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="{{ url('js/app.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    @stack('scripts')
     @section('script')
     <script>
  

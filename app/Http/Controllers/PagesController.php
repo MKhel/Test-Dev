@@ -22,7 +22,7 @@ class PagesController extends Controller
     	return view('activeclient');
     }
     public function selectclient (){
-        $clientData = activeclient::all();
+        $clientData = client::all();
     	return view('Client.selectclient', compact('clientData'));
     }
     public function deployment(){
@@ -42,7 +42,7 @@ class PagesController extends Controller
     
     // Applicants
     public function applicant_list(){
-        $applicantData = Applicant::paginate(5);
+        $applicantData = Applicant::all();
     	return view('Applicant.applicant_list', compact('applicantData'));
     }
     public function add_applicant(){
@@ -51,7 +51,7 @@ class PagesController extends Controller
     }
     // JobOrders   
     public function add_JO($id){
-        $clientData = activeclient::find($id);
+        $clientData = client::find($id);
         $clientID = $clientData->id;
         return view('JobOrders.add_joborder', compact('clientData', 'clientID'));
         //$clientData = activeclient::where("id", "LIKE", "$id")->get();
@@ -65,10 +65,29 @@ class PagesController extends Controller
     
 
     public function test(){
-        $clientData = DB::table("clients")
-                    ->where("clients_name", "=", "tech")->get();
-        return $clientData;
-    	//return view('client_jobsite', compact('clientData'));;
+        
+        // $appJobs = JobOrder::withCount(['applicant', 'applicant', 'client' => function ($query){
+        //     $query->where('job_application_status', 'Line Up');
+        // }])->get();
+        // $appJobs = Applicant::where('client_id', 1)->withCount(['applicant', 'applicant' => function ($query){
+        //     $query->where('job_application_status', 'Line Up')->get();
+        // }])->get();
+        //$appJobs = Applicant::withCount(['applicant', 'applicant_linedup'])->get();
+        $id = 3;
+        $appJobs = JobOrder::where('client_id', $id)->withCount(['applicant','lined_up', 'signed_jol' => function() {
+        
+        }])->get();
+        
+        return $appJobs;
+        
+        foreach ($appJobs as $job) {
+                echo $job->count();
+                echo $job->position;
+                echo $job->applicant_count;
+                echo $job->lined_up_count;
+                echo $job->signed_jol_count;
+                
+        }
     }
     public function profile(){
     	return view('Profile.user_profile');

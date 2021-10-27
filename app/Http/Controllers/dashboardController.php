@@ -16,15 +16,15 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        $countJobsite = DB::table('activeclients')->count();
+        $countJobsite = DB::table('clients')->count();
         $countJobOrder = DB::table('job_orders')->count();
-        $countClient = DB::table('activeclients')->count();
+        $countClient = DB::table('clients')->count();
         $countapplicant = DB::table('applicants')->count();
-        $percentClient = $countClient / 100 * 100;
-        $percentJobsite = $countJobsite / 100 * 100;
-        $percentJobOrder = $countJobOrder / 100 * 100;
-        $percentapplicant = $countapplicant / 100 * 100;
-        $clientData = DB::table('activeclients')->get();
+        $percentClient = $countClient / 1000 * 100;
+        $percentJobsite = $countJobsite / 1000 * 100;
+        $percentJobOrder = $countJobOrder / 1000 * 100;
+        $percentapplicant = $countapplicant / 1000 * 100;
+        $clientData = DB::table('clients')->get();
 
         return view('dashboard', compact('countClient', 'percentClient', 'countJobsite', 'percentJobsite', 'countJobOrder', 'percentJobOrder', 'clientData', 'percentapplicant', 'countapplicant', ));
     

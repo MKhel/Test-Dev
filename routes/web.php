@@ -125,6 +125,7 @@ Route::any('/search', function(){
     //return view('dashboard');b
 //});
 Route::get('/client', [App\Http\Controllers\clientController::class, 'index'])->name('client')->middleware(['auth']);
+Route::post('/client', [App\Http\Controllers\clientController::class, 'store'])->name('client')->middleware(['auth']);
 Route::resource('/joborder', 'App\Http\Controllers\JobController')->middleware(['auth']);
 //Route::resource('/client', 'App\Http\Controllers\clientController')->middleware(['auth']);
 Route::resource('/activeclients', 'App\Http\Controllers\active_client')->middleware(['auth']);
@@ -145,7 +146,7 @@ Route::get('applicant_list', 'App\Http\Controllers\PagesController@applicant_lis
 Route::get('selectposition', 'App\Http\Controllers\PagesController@add_applicant')->middleware(['auth']);
 //Job Position Selection to add new applicant
 
-Route::get('/position/{id}' , 'App\Http\Controllers\client_data_controller@getallposition')->middleware(['auth']);
+Route::get('/position/{id}' , 'App\Http\Controllers\client_data_controller@testcount')->middleware(['auth']);
 
 
 //Route::get('/activeclient/{id}', 'App\Http\Controllers\clientController@getstatuspositiondata');
@@ -310,7 +311,7 @@ Route::get('/testtab', function(){
 
 
 Route::get('/inserta', function () {
-	activeclient::insert([
+	client::insert([
 		'clients_name' => 'Tech',
 		'descriptions' => 'Anything',
 		'poea_accredition' => 'POEA 1213151'
@@ -328,7 +329,7 @@ Route::get('/app', function(){
 
 
 Route::get('/addclient_jobsite', function(){
-	$clientData = activeclient::all();
+	$clientData = client::all();
 	return view('Client.addclient_jobsite', compact('clientData'));
 });
 Route::get('/joborders_percountry' , 'App\Http\Controllers\PagesController@joborders_percountry');

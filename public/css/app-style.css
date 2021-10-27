@@ -14,11 +14,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
+
 }
 body {
     overflow-x: hidden;
-    background: #f7f9fc; 
+    background: #f7f9fc;
 }
 .btn-all{
   text-align: center;
@@ -637,17 +638,15 @@ body {
   /*Table Design*/
 
   .table{
+    font-size: .8em;
     border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
   border: 1px solid #ddd;
   }
   .table th{
     padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
-  color: white;
   vertical-align:auto;
   }
   th, td {
@@ -808,4 +807,28 @@ form.example input::after {
   content: "";
   clear: both;
   display: table;
+}
+
+
+/* Loader */
+.loader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: lightgrey;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disppear{
+  animation: vanish 1s forwards;
+}
+@keyframes vanish {
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
 }
