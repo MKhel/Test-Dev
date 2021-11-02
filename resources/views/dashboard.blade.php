@@ -5,7 +5,7 @@ Dashboard
 @endsection
 
 @section('content')
-
+<div class="sub-container">
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
@@ -30,7 +30,7 @@ Dashboard
 
 <div class="row">
   <div class="col-lg-3 col-sm-6 col-md-6 mb-3 d-flex">
-      <div class="card flex-fill acard">
+      <div class="status-count-card">
       <a href="/client" class="btn-cards" style="color:black;text-decoration: none; ">
         <div class="card-body py-4">
           <div class="media">
@@ -57,7 +57,7 @@ Dashboard
       </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-md-6 mb-3 d-flex">
-      <div class="card flex-fill acard">
+      <div class="status-count-card">
       <a href="/applicant_list" class="btn-cards" style="color:black;text-decoration: none; ">
         <div class="card-body py-4">
           <div class="media">
@@ -84,7 +84,7 @@ Dashboard
       </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-md-6 mb-3 d-flex">
-      <div class="card flex-fill acard">
+      <div class="status-count-card">
       <a href="/joborder" class="btn-cards" style="color:black;text-decoration: none; ">
         <div class="card-body py-4">
           <div class="media">
@@ -111,7 +111,7 @@ Dashboard
       </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-md-6 mb-3 d-flex">
-      <div class="card flex-fill acard">
+      <div class="status-count-card">
       <a href="/joborder" class="btn-cards" style="color:black;text-decoration: none; ">
         <div class="card-body py-4">
           <div class="media">
@@ -185,7 +185,7 @@ Dashboard
 </div>
 <div class="row">
   <div class="col-12 col-lg-8 mb-3 d-flex">
-  <div class="card flex-fill">
+  <div class="status-count-card flex-fill">
         <div class="card-body py-4">
           <div class="media">
             <div class="media-body">
@@ -210,7 +210,7 @@ Dashboard
       </div>
   </div>
   <div class="col-12 col-lg-4 mb-3 d-flex">
-  <div class="card flex-fill">
+  <div class="status-count-card">
         <div class="card-body py-4">
           <div class="media">
             <div class="media-body">
@@ -248,7 +248,7 @@ Dashboard
         </div>
 </div>
 
-<div class="card flex-fill mb-6">
+<div class="card flex-fill">
 						<div class="card-header">
 							<div class="card-actions float-right">
 								<div class="dropdown">
@@ -325,7 +325,7 @@ Dashboard
                   </li><li class="paginate_button page-item "><a href="#" aria-controls="datatables-dashboard-products" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="datatables-dashboard-products_next"><a href="#" aria-controls="datatables-dashboard-products" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
 					</div>
           
-
+</div>
           
 @endsection
 

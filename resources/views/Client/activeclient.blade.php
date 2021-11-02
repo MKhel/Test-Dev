@@ -21,10 +21,10 @@ Active Client
 </div>
 
 </div>
-
+<div class="sub-container">
 <div class="row">
   
-    
+
       
         @foreach($clientData as $newclient)
        
@@ -75,12 +75,12 @@ Active Client
                
           </div> -->
         
-        
+          
         @endforeach
-        
+          
 </div>
 
-
+</div> 
 
 @endsection
 @section('footer')

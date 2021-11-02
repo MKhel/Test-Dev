@@ -5,7 +5,7 @@ Active Client
 @endsection
 
 @section('content')
-
+<div class="sub-container">
 <div class="row">
 <div class="col-md-12 header-top-text mb-4">
 
@@ -58,7 +58,7 @@ Active Client
       
 
 </div>
-
+</div>
 @endsection
 
 

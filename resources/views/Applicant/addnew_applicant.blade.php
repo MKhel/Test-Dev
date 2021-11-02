@@ -5,7 +5,7 @@ Add new applicant
 @endsection
 
 @section('content')
-
+<div class="sub-container">
 <div class="row">
 <div class="col-md-12 header-top-text mb-4">
         <div class="mt-4 ml-4 mb-3">
@@ -89,8 +89,8 @@ Add new applicant
 </form>
 </div>
 
+</div>
 
-<br><br>
 @endsection
 
 @yield('footer')

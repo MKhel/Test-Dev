@@ -5,7 +5,7 @@ Client Job Order
 @endsection
 
 @section('content')
-
+<div class="sub-container">
 <div class="content-container">
 
 <div class="row">
@@ -108,6 +108,7 @@ Client Job Order
             
         </div>
 </div> 
+</div>
 @endsection
 @section('footer')
 

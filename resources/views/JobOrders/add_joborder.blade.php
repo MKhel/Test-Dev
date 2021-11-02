@@ -5,7 +5,7 @@ Add Job Orders
 @endsection
 
 @section('content')
-
+<div class="sub-container">
 <div class="row">
   <div class="col-md-12 header-top-text mb-4">
           <div class="mt-4 ml-4 mb-3">
@@ -99,9 +99,7 @@ Add Job Orders
 </div>
 
 
-<br>
-<br>
-<br>
+</div>
 @endsection
 
 @yield('footer')

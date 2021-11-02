@@ -13,8 +13,8 @@ Applicant List
 @endsection
 
 @section('content')
+<div class="sub-container">
 <div class="content-container">
-
 <div class="row">
 <div class="col-md-12 header-top-text mb-4">
         <div class="mt-4 ml-4 mb-3">
@@ -124,7 +124,7 @@ Applicant List
 </div> -->
 
 
-      <br><br>
+</div>
 @endsection
 @push('scripts')
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>

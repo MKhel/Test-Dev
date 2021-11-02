@@ -758,9 +758,9 @@ body {
  /* dashboard */
 
 .card {
-  border-radius: 16px;
+
   border: none;
-  box-shadow: 2px -1px 5px -3px rgba(0,0,0,0.25);
+  
 }
 
 
@@ -831,4 +831,13 @@ form.example input::after {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+.sub-container {
+  margin-bottom: 10%;
+}
+.status-count-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px -1px 5px -3px rgba(0,0,0,0.25);
 }

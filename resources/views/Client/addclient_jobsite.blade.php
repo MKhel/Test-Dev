@@ -27,7 +27,8 @@ Add Active Client
             @endif
 
 
-<div class="row mb-6">
+<div class="row">
+  <div class="sub-container">
   <div class="container-fuild">
       <div class="card flex-fill">
             
@@ -106,7 +107,7 @@ Add Active Client
         </div>
 
             
-
+        </div>
     </div>
   </div>
 </div>
