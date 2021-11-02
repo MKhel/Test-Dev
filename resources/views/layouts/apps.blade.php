@@ -80,7 +80,7 @@
                     <span class="nav__label">Clients</span> 
                     </a>
                     <div class="collapse list-unstyled" id="clients">
-                            <a class="subMenu" href="/client"><label>Active Client</label></a>
+                            <a class="subMenu Active" href="/client"><label>Active Client</label></a>
                             <a class="subMenu" href="/addclient_jobsite"><label>Add New Client</label></a>
                             <a class="subMenu" href="/"><label>Jobsite</label></a>
                     </div>

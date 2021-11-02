@@ -165,7 +165,7 @@ Client Jobsite
             <thead>
               <tr>
                 <th>Position</th>
-                <th>Position</th>
+                <th>Actual Position</th>
                 <th>Requirement</th>
                 <th></th>
                 <th>Lined Up</th>
@@ -189,7 +189,7 @@ Client Jobsite
                     
                     @foreach($appJobs as $JobOrders)
                       <td>{{$JobOrders->position}}</td>
-                      <td>{{$JobOrders->position}}</td>
+                      <td>{{$JobOrders->actual_position}}</td>
                       <td>{{$JobOrders->no_ofworker}}</td>
                       <td>{{$JobOrders->no_ofworker}}</td>
                     
