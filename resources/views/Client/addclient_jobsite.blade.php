@@ -6,7 +6,7 @@ Add Active Client
 
 @section('content')
 <div class="row">
-<div class="col-md-12 header-top-text mb-4">
+<div class="col-md-12 header-top-text mb-3">
         <div class="mt-4 ml-4 mb-3">
         <div class="col-sm-8">
         <h2>Add New Client</h2>
@@ -27,7 +27,7 @@ Add Active Client
             @endif
 
 
-<div class="row">
+<div class="row mb-6">
   <div class="container-fuild">
       <div class="card flex-fill">
             

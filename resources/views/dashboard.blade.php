@@ -10,14 +10,14 @@ Dashboard
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
+          <div class="btn-group me-2 mr-2">
           <button class="btn btn-light bg-white shadow-sm dropdown-toggle" >
           <span data-feather="calendar"></span>
             This week
             </button>
           </div>
           
-          <button class="btn btn-primary shadow-sm" >
+          <button class="btn btn-primary shadow-sm mr-2" >
             <i class="fas fa-filter" ></i>
             </button>
           
@@ -248,7 +248,7 @@ Dashboard
         </div>
 </div>
 
-<div class="card flex-fill">
+<div class="card flex-fill mb-6">
 						<div class="card-header">
 							<div class="card-actions float-right">
 								<div class="dropdown">
@@ -275,15 +275,6 @@ Dashboard
                   <th class="sorting" tabindex="0" aria-controls="datatables-dashboard-products" rowspan="1" colspan="1" aria-label="Sales: activate to sort column ascending">Status</th></tr>
 							</thead>
 							<tbody>
-								
-								
-								
-								
-								
-								
-								
-								
-								
 							<tr role="row" class="odd">
 									<td class="">Recruitment</td>
 									<td class="sorting_1">Juan Dela Cruz</td>
@@ -335,11 +326,7 @@ Dashboard
 					</div>
           
 
-
-
-          <br>
-          <br>
-          <br>
+          
 @endsection
 
 
